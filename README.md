@@ -1,7 +1,7 @@
 # english-french-dictionary
 
 English-French and French-English dictionary. Uses a Hash Table for O(1) time complexity on fetching translations. <br />
-Intended to be run with ```./run.sh build'``` <br />
+Intended to be run with ```./run.sh build``` <br />
 Dependencies: g++, CMake, bash
 <br />
 ```
