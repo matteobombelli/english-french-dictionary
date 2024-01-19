@@ -8,7 +8,6 @@ Dependencies: g++, CMake, bash
 =================== Main Menu ===================
 To translate from English to French, type 'EtoF'
 To translate from French to English, type 'FtoE'
-To practice your translations, type 'practice'
 To quit, type 'quit'
 You can return to the main menu by typing 'MM'
 EtoF

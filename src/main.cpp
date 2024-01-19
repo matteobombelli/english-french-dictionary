@@ -40,7 +40,6 @@ int main(int argc, char *argv[])
     std::cout << "=================== Main Menu ===================" << std::endl;
     std::cout << "To translate from English to French, type 'EtoF'" << std::endl;
     std::cout << "To translate from French to English, type 'FtoE'" << std::endl;
-    std::cout << "To practice your translations, type 'practice'" << std::endl;
     std::cout << "To quit, type 'quit'" << std::endl;
     std::cout << "You can return to the main menu by typing 'MM'" << std::endl;
 
@@ -78,9 +77,6 @@ int main(int argc, char *argv[])
         else
           std::cout << "The translation for '" << input << "' is '" << translation << "'" << std::endl;
       }
-
-    }
-    else if (input == "practice") {
 
     }
     else if (input == "MM") {
