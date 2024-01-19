@@ -22,7 +22,7 @@ HashTableTS load_dictionary(int mode) {
       new_pair.translation = s2;
     } else {
       new_pair.word = s2;
-      new_pair.word = s1;
+      new_pair.translation = s1;
     }
 
     mapped_dictionary.insert(new_pair);
@@ -60,7 +60,9 @@ int main(int argc, char *argv[])
 
         std::cin >> input;
         std::string translation = dictionary.get_translation(input);
-        if (translation.empty() && input != "MM")
+        if (translation == "MM")
+          std::cout << "Returning to main menu..." << std::endl;
+        else if (translation.empty())
           std::cout << "Sorry, I don't have the translation for that word" << std::endl;
         else
           std::cout << "The translation for '" << input << "' is '" << translation << "'" << std::endl;
@@ -73,7 +75,7 @@ int main(int argc, char *argv[])
     else if (input == "MM") {
       continue;
     }
-    else {
+    else if (input != "quit") {
       std::cout << "Invalid selection" << std::endl;
     }
   }
