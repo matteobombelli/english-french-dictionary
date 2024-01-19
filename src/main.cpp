@@ -33,9 +33,9 @@ HashTableTS load_dictionary(int mode) {
 
 int main(int argc, char *argv[])
 {
-  std::cout << "Welcome to the Enligsh-French Translator" << std::endl;
+  std::cout << "Welcome to the English-French Translator" << std::endl;
   
-  std::string input = "MM";
+  std::string input;
   while (input != "quit") {
     std::cout << "=================== Main Menu ===================" << std::endl;
     std::cout << "To translate from English to French, type 'EtoF'" << std::endl;
@@ -44,9 +44,14 @@ int main(int argc, char *argv[])
     std::cout << "To quit, type 'quit'" << std::endl;
     std::cout << "You can return to the main menu by typing 'MM'" << std::endl;
 
-    std::cin >> input;
+    // Get input
+    if (!std::getline(std::cin >> std::ws, input)) {
+      perror("Failed to get user input");
+      exit(EXIT_FAILURE);
+    }
 
     if (input == "EtoF" || input == "FtoE") {
+      // Load a hash table in a WordToTranslation mode, then fetch each requested translations
       int mode;
       if (input == "EtoF")
         mode = ENGLISHTOFRENCH;
@@ -58,9 +63,15 @@ int main(int argc, char *argv[])
       while (input != "MM") {
         std::cout << "Enter a word to translate: " << std::endl;
 
-        std::cin >> input;
+        // Get input
+        if (!std::getline(std::cin >> std::ws, input)) {
+          perror("Failed to get user input");
+          exit(EXIT_FAILURE);
+        }
+
+        // Process translations
         std::string translation = dictionary.get_translation(input);
-        if (translation == "MM")
+        if (input == "MM")
           std::cout << "Returning to main menu..." << std::endl;
         else if (translation.empty())
           std::cout << "Sorry, I don't have the translation for that word" << std::endl;
@@ -82,5 +93,5 @@ int main(int argc, char *argv[])
 
   std::cout << "Quitting..." << std::endl;
 
-  return 0;
+  exit(EXIT_SUCCESS);
 }
